@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Price calculator</title>
+</head>
+<body>
+    <h3>Please check the console for output.</h3>
+    <script src="src/date-price-rule.js"></script>
+    <script src="src/product-type-price-rule.js"></script>
+    <script src="src/user-type-price-rule.js"></script>
+    <script src="src/price-calculator.js"></script>
+    <script>
+        var calculatedPrice = 0;
+        var calculatedPriceOld = 0;
+        var userType = 1;
+        var productType = 0;
+        var price = 100;
+        var publishedDate = new Date();
+
+        try {
+            calculatedPrice = calculatePrice(userType, productType, price, publishedDate);
+            calculatedPriceOld = calculatePriceOld(userType, productType, price, publishedDate);
+        } catch (ex) {
+            console.log(ex);
+        }
+
+        console.log('Calculated price:', calculatedPrice);
+        console.log('Calculated price old:', calculatedPriceOld);
+    </script>
+</body>
+</html>
