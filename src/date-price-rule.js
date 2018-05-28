@@ -1,7 +1,6 @@
 // productType, 0 = new product, 1 = old product
 function datePrizeRule() {
-  var enddateDiscount = -10;
-  var ageInDaysToCountAsEnded = 30;
+  var discount = -10;
 
   this.getPrizeModifier = function(
     userType,
@@ -13,12 +12,11 @@ function datePrizeRule() {
       return 0;
     }
 
-    return getAgeInDays(publishedDate) >= ageInDaysToCountAsEnded ? enddateDiscount : 0;
+    return publishedToday(publishedDate) ? discount : 0;
   };
 
-  function getAgeInDays(publishedDate) {
+  function publishedToday(publishedDate) {
     var now = new Date();
-    var ageInDays = Math.floor((now - publishedDate) / (1000 * 60 * 60 * 24));
-    return ageInDays;
+    return now.toDateString() === publishedDate.toDateString();
   }
 }

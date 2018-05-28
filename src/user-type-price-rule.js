@@ -8,6 +8,6 @@ function userTypePrizeRule() {
     price,
     publishedDate
   ) {
-    return productType === 1 ? companyDiscount : 0;
+    return userType === 1 ? companyDiscount : 0;
   };
 }
