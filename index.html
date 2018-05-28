@@ -13,7 +13,6 @@
     <script src="src/price-calculator.js"></script>
     <script>
         var calculatedPrice = 0;
-        var calculatedPriceOld = 0;
         var userType = 1;
         var productType = 0;
         var price = 100;
@@ -23,20 +22,17 @@
             // rules constructed outsude the calculator so that the calculator is 
             // agnostic to what rule type it has. Also making testing easier as you can pass rules that you want during test.
             var rules = [];
-            // rule data could be retreied from config/db etc and passed in to each rule. 
-            // as long as a rule defines the getPrizeModifier interface, the rule can do what it wants.
+            // As long as a rule defines the getPrizeModifier interface, the rule can do what it wants.
             // rule data like discount amount etc could be retreived from db/config/API if needed
             rules.push(new productTypePrizeRule());
             rules.push(new userTypePrizeRule());
             rules.push(new datePrizeRule());
             calculatedPrice = calculatePrice(rules, userType, productType, price, publishedDate);
-            calculatedPriceOld = calculatePriceOld(userType, productType, price, publishedDate);
         } catch (ex) {
             console.log(ex);
         }
 
         console.log('Calculated price:', calculatedPrice);
-        console.log('Calculated price old:', calculatedPriceOld);
     </script>
 </body>
 
